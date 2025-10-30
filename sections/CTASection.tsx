@@ -6,7 +6,7 @@ import Button from "@/components/Button";
 export default function CTASection() {
   const whatsappNumber = "5492284201526";
   const whatsappText = encodeURIComponent(
-    "Hola! Quiero reservar Tiny Van 🚐. \nQuiero mas info sobre el alquiler!"
+    "Hola! Quiero reservar Tiny Van. \nQuiero mas info sobre el alquiler!"
   );
 
   return (
