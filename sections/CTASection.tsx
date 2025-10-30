@@ -4,9 +4,9 @@ import { motion } from "framer-motion";
 import Button from "@/components/Button";
 
 export default function CTASection() {
-  const whatsappNumber = "5492284675618";
+  const whatsappNumber = "5492284201526";
   const whatsappText = encodeURIComponent(
-    "que hace wacha ? te escribo para consultarte por la chata"
+    "Hola! Quiero reservar Tiny Van 🚐. \nQuiero mas info sobre el alquiler!"
   );
 
   return (

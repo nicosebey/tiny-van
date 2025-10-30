@@ -18,8 +18,22 @@ export const metadata: Metadata = {
     description: "Descubrí la libertad de viajar con Tiny Van Argentina. Todo lo que necesitás, ya está a bordo.",
     type: "website",
     locale: "es_AR",
+    images: [
+      {
+        url: "/carousel1.png",
+        width: 1200,
+        height: 630,
+        alt: "Tiny Van Argentina - Motorhome",
+      },
+    ],
   },
-    generator: 'v0.app'
+  twitter: {
+    card: "summary_large_image",
+    title: "Tiny Van Argentina | Alquiler de Motorhomes",
+    description: "Descubrí la libertad de viajar con Tiny Van Argentina. Todo lo que necesitás, ya está a bordo.",
+    images: ["/carousel1.png"],
+  },
+  generator: 'v0.app'
 }
 
 export default function RootLayout({
