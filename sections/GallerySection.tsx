@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { ChevronLeft, ChevronRight } from "lucide-react"
 import SectionTitle from "@/components/SectionTitle"
@@ -27,26 +27,30 @@ export default function GallerySection() {
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length)
   }
 
+   const [isMobile, setIsMobile] = useState(false)
+      
+        useEffect(() => {
+          const checkIsMobile = () => {
+            setIsMobile(window.innerWidth < 768)
+          }
+          
+          checkIsMobile()
+          window.addEventListener('resize', checkIsMobile)
+          
+          return () => window.removeEventListener('resize', checkIsMobile)
+        }, [])
+
   return (
     <>
-    <style jsx>{`
-      .gallery-container {
-        padding-left: 0;
-      }
-      @media (min-width: 768px) {
-        .gallery-container {
-          padding-left: 7rem;
-        }
-      }
-    `}</style>
-    <section className="py-20 md:py-32 bg-primary" style={{textAlign:'center'}}>
+
+    <section className="py-20 md:py-32 bg-primary" style={{textAlign:'center',}}>
       <div className="w-full bg-[#F7F4E4]" style={{textAlign:'center'}}>
       <div className="gallery-container">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8" style={{textAlign:'center'}}>
+        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8" style={{textAlign:'center', paddingLeft:isMobile ? '1rem' : '0', paddingRight:isMobile ? '1rem' : '0'}}>
 
           <div className="relative w-full mx-auto" style={{textAlign:'center'}}>
           
-          <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl" style={{textAlign:'center'}}>
+          <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl" style={{textAlign:'center' }}>
             <AnimatePresence mode="wait">
               <motion.img
                 key={currentIndex}

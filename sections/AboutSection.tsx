@@ -2,20 +2,34 @@
 
 import { motion } from "framer-motion"
 import Button from "@/components/Button"
+import { useState, useEffect } from "react"
+import { is } from "date-fns/locale"
 
 export default function AboutSection() {
+   const [isMobile, setIsMobile] = useState(false)
+    
+      useEffect(() => {
+        const checkIsMobile = () => {
+          setIsMobile(window.innerWidth < 768)
+        }
+        
+        checkIsMobile()
+        window.addEventListener('resize', checkIsMobile)
+        
+        return () => window.removeEventListener('resize', checkIsMobile)
+      }, [])
   return (
     <section id="sobre-la-van" className="py-20 md:py-32 bg-primary text-[#F7F4E4] lg:h-[1440px]">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="grid md:grid-cols-2 gap-12 items-center h-full">
+        <div className="grid md:grid-cols-2 gap-12 items-center h-full" style={{marginTop:isMobile?'2rem':'0'}}>
           {/* Image column - centered vertically */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="relative h-[400px] md:h-[1100px] overflow-hidden flex items-center justify-center md:ml-16 md:pr-4 w-full md:max-w-[1000px]"
-            style={{ background: 'transparent' }}
+            className="relative h-[400px] md:h-[1100px] flex items-center justify-center md:ml-16 md:pr-4 w-full md:max-w-[1000px]"
+            style={{ background: 'transparent', paddingLeft: isMobile ? '2rem' : 'auto' , paddingRight: isMobile ? '2rem' : 'auto', paddingTop: isMobile ? '2rem' : 'auto', overflow: isMobile ? 'visible' : 'hidden' }}
           >
             <img src="/arcoImg.png" alt="Interior de Tiny Van" className="w-full h-full object-cover" style={{ background: 'transparent' }} />
           </motion.div>
@@ -27,6 +41,7 @@ export default function AboutSection() {
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
             className="h-full flex flex-col justify-center md:pl-12"
+            style={{ paddingLeft:isMobile ? '1rem' : '0', paddingRight:isMobile ? '1rem' : '0' }}
           >
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 text-[#F7F4E4] text-balance">
               Una van. <br />
@@ -43,7 +58,7 @@ export default function AboutSection() {
               que tu única preocupación sea disfrutar del viaje.
             </p>
 
-            <div className="flex justify-center">
+            <div className="flex justify-center" style={{paddingBottom:isMobile ? '2rem' : '0'}}>
               <Button
               variant="secondary"
               size="lg"

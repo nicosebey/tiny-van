@@ -1,8 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
-import SectionTitle from "@/components/SectionTitle"
 import SpecCard from "@/components/SpecCard"
+import { useState, useEffect } from "react"
 
 const specs = [
 	{
@@ -44,36 +43,76 @@ const specs = [
 		],
 	},
 	{
-		title: "Conducción y seguridad",
+		title: "Conducción",
 		items: [
 			"Sprinter 315 modelo 2025",
 			"Velocidad crucero",
+			"Caja de transmición con 6 marchas",
+			"Pantalla tactil con conexión para smarthphones",
+		],
+	},
+	{
+		title: "Seguridad",
+		items: [
 			"Ayuda de permanencia en el carril",
 			"Asistencia ante vientos cruzados",
 			"Camaras 360 de estacionamiento",
-			"Caja de transmición con 6 marchas",
-			"Pantalla tactil con conexión para smarthphones",
 		],
 	},
 ]
 
 export default function SpecsSection() {
+	 const [isMobile, setIsMobile] = useState(false)
+		
+		  useEffect(() => {
+			const checkIsMobile = () => {
+			  setIsMobile(window.innerWidth < 768)
+			}
+			
+			checkIsMobile()
+			window.addEventListener('resize', checkIsMobile)
+			
+			return () => window.removeEventListener('resize', checkIsMobile)
+		  }, [])
 	return (
-		<section className="py-20 md:py-32 bg-beige justify-items-center mb-20 overflow-hidden">
-			<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
-				<div className="flex justify-center" style={{marginBottom:'3rem', marginTop:'3rem'}}>
-					<div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full md:w-[1246px] max-w-full">
-						{specs.map((spec, index) => (
-							<SpecCard
-								key={index}
-								title={spec.title}
-								items={spec.items}
-								delay={index * 0.1}
-							/>
-						))}
+		<>
+			<style jsx>{`
+				@media (max-width: 768px) {
+					.specs-container {
+						display: flex !important;
+						overflow-x: auto !important;
+						scroll-snap-type: x mandatory !important;
+						-webkit-overflow-scrolling: touch !important;
+						gap: 1rem !important;
+						padding-left: 1.5rem !important;
+						padding-right: 1.5rem !important;
+					}
+					.specs-container > div {
+						flex: 0 0 85% !important;
+						scroll-snap-align: start !important;
+					}
+					.specs-container::-webkit-scrollbar {
+						display: none;
+					}
+				}
+			`}</style>
+			<section className="py-20 md:py-32 bg-beige justify-items-center mb-20 overflow-hidden">
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
+					<div className="flex justify-center" style={{marginBottom:'3rem', marginTop:'3rem', paddingLeft:isMobile ? '0' : '0', paddingRight:isMobile ? '0' : '0' }}>
+						<div className="specs-container grid md:grid-cols-2 gap-8 w-full md:w-[1246px] max-w-full">
+							{specs.map((spec, index) => (
+								<div key={index}>
+									<SpecCard
+										title={spec.title}
+										items={spec.items}
+										delay={index * 0.1}
+									/>
+								</div>
+							))}
+						</div>
 					</div>
 				</div>
-			</div>
-		</section>
+			</section>
+		</>
 	)
 }
