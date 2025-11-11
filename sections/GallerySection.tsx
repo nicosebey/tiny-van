@@ -12,6 +12,11 @@ const images = [
   "/carousel6.png",
   "/carousel8.png",
   "/carousel7.png",
+  "/carousel9.jpeg",
+  "/carousel10.jpeg",
+  "/carousel11.jpeg",
+  "/carousel13.jpeg",
+  "/carousel14.jpeg",
 ]
 
 export default function GallerySection() {
@@ -43,10 +48,11 @@ export default function GallerySection() {
 
     <section className="py-20 md:py-32 bg-primary" style={{textAlign:'center',}}>
       <div className="w-full bg-[#F7F4E4]" style={{textAlign:'center'}}>
-      <div className="gallery-container">
-        <div className="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8" style={{textAlign:'center', paddingLeft:isMobile ? '1rem' : '0', paddingRight:isMobile ? '1rem' : '0'}}>
-
-          <div className="relative w-full mx-auto" style={{textAlign:'center'}}>
+      <div style={{paddingLeft: isMobile ? '1rem' : '0', paddingRight: isMobile ? '1rem' : '0'}}>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
+          <div className="flex justify-center" style={{marginBottom:'3rem', marginTop:'3rem'}}>
+            <div className="w-full md:w-[1246px] max-w-full">
+              <div className="relative w-full mx-auto" style={{textAlign:'center'}}>
           
           <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl" style={{textAlign:'center' }}>
             <AnimatePresence mode="wait">
@@ -90,9 +96,11 @@ export default function GallerySection() {
               />
             ))}
           </div>
-        </div>
-        </div>
+              </div>
             </div>
+          </div>
+        </div>
+      </div>
       </div>
     </section>
     </>

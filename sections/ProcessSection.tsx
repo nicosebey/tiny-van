@@ -51,23 +51,25 @@ export default function ProcessSection() {
 				}
 			`}</style>
 			<section id="requisitos" className="py-20 md:py-32 bg-beige" style={{ marginBottom: "3rem" }}>
-				<div className="container mx-auto px-4 sm:px-6 lg:px-8">
-					<div
-						className="process-title"
-						style={{
-							color: "#2A4E36",
-							fontFamily: "Inter, sans-serif",
-							fontSize: "33px",
-							fontStyle: "normal",
-							fontWeight: 600,
-							lineHeight: "normal",
-							paddingLeft: "2rem",
-							paddingBottom: "2rem",
-							paddingTop: "2rem",
-						}}
-					>
-						¿Cómo funciona el alquiler?
-					</div>
+				<div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-full">
+					<div className="flex justify-center" style={{marginBottom:'3rem', marginTop:'3rem'}}>
+						<div className="w-full md:w-[1246px] max-w-full">
+							<div
+								className="process-title"
+								style={{
+									color: "#2A4E36",
+									fontFamily: "Inter, sans-serif",
+									fontSize: "33px",
+									fontStyle: "normal",
+									fontWeight: 600,
+									lineHeight: "normal",
+									paddingLeft: "2rem",
+									paddingBottom: "2rem",
+									paddingTop: "2rem",
+								}}
+							>
+								¿Cómo funciona el alquiler?
+							</div>
 
 					<div className="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
 						{steps.map((step, index) => (
@@ -115,6 +117,8 @@ export default function ProcessSection() {
 								</div>
 							</motion.div>
 						))}
+					</div>
+						</div>
 					</div>
 				</div>
 			</section>
