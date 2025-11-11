@@ -55,18 +55,11 @@ export default function GallerySection() {
               <div className="relative w-full mx-auto" style={{textAlign:'center'}}>
           
           <div className="relative h-[400px] md:h-[600px] rounded-3xl overflow-hidden shadow-2xl" style={{textAlign:'center' }}>
-            <AnimatePresence mode="wait">
-              <motion.img
-                key={currentIndex}
-                src={images[currentIndex]}
-                alt={`Tiny Van imagen ${currentIndex + 1}`}
-                className="w-full h-full object-cover"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                />
-            </AnimatePresence>
+            <img
+              src={images[currentIndex]}
+              alt={`Tiny Van imagen ${currentIndex + 1}`}
+              className="w-full h-full object-cover"
+            />
 
             <button
               onClick={prevSlide}
